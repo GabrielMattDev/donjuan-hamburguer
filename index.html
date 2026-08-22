@@ -1693,11 +1693,11 @@
           `💳 *Pagamento:* ${payment}\n\n` +
           `*ITENS DO PEDIDO:*\n${itemsText}\n\n` +
           `💰 *Total:* R$ ${total.toFixed(2).replace(".", ",")}\n\n` +
-          `🍟 *Todas as hamburgers acompanham fritas*\n\n` +
+          `🍟 *Todas os hamburguers acompanham fritas*\n\n` +
           `_Pedido enviado via cardápio digital Don Juan_`;
 
         const encodedMsg = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+        const whatsappUrl = `https://wa.me/${5531980479022}?text=${encodedMsg}`;
 
         window.open(whatsappUrl, "_blank");
         showToast("📱", "Redirecionando para o WhatsApp...");
