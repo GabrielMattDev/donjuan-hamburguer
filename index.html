@@ -1159,8 +1159,8 @@
       }
     </style>
     <base target="_blank" />
-    <base target="_blank" />
-  </head>
+  <base target="_blank">
+</head>
   <body>
     <div class="floating-bg">
       <span>🍔</span><span>🇨🇴</span><span>🍟</span><span>🌶️</span>
@@ -1194,6 +1194,9 @@
       <span><span class="icon">🛵</span> Delivery</span>
       <span><span class="icon">🇨🇴</span> Sabor Colombiano</span>
       <span><span class="icon">🍟</span> Todas acompanham fritas</span>
+      <a href="https://www.instagram.com/donjuan_burger" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:6px 14px;border-radius:50px;text-decoration:none;font-size:0.75rem;font-weight:600;">
+        📷 Instagram
+      </a>
     </div>
 
     <div class="menu-container">
@@ -1459,46 +1462,10 @@
         </div>
       </div>
 
-      <div
-        class="footer-note"
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          flex-wrap: wrap;
-        "
-      >
+      <div class="footer-note" style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
         <span class="fries">🍟</span>
         <span>TODAS NOSSAS HAMBURGERS VEM ACOMPANHADAS DE FRITAS</span>
         <span class="fries">🍟</span>
-        <a
-          href="https://www.instagram.com/donjuan_burger"
-          target="_blank"
-          rel="noopener"
-          style="
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: linear-gradient(
-              45deg,
-              #f09433,
-              #e6683c,
-              #dc2743,
-              #cc2366,
-              #bc1888
-            );
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 5px;
-          "
-        >
-          📷 Instagram
-        </a>
       </div>
     </div>
 
@@ -1664,11 +1631,20 @@
           .map((item, index) => {
             const itemTotal = item.price * item.qty;
             total += itemTotal;
-            let text = `• ${item.name} (${item.qty}x) - R$ ${itemTotal.toFixed(2).replace(".", ",")}`;
-            if (item.obs) text += `\n  📝 Obs: ${item.obs}`;
-            return text;
+            return `
+              <div class="cart-item">
+                <div class="cart-item-info">
+                  <div class="cart-item-name">${item.name}</div>
+                  <div class="cart-item-qty">${item.qty}x unidade(s) — R$ ${itemTotal.toFixed(2).replace(".", ",")}</div>
+                  ${item.obs ? `<div class="cart-item-obs">📝 Obs: ${item.obs}</div>` : ""}
+                </div>
+                <button class="cart-item-remove" onclick="removeFromCart(${index})" title="Remover item">
+                  🗑️
+                </button>
+              </div>
+            `;
           })
-          .join("\n");
+          .join("");
 
         totalEl.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
         checkoutBtn.disabled = false;
