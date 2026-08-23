@@ -1157,10 +1157,322 @@
           width: 30px;
         }
       }
+
+      /* ============ TAB NAVIGATION ============ */
+      .tab-nav {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0 25px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .tab-btn {
+        background: transparent;
+        border: 2px solid var(--colombia-yellow);
+        color: var(--colombia-yellow);
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .tab-btn:hover {
+        background: rgba(252, 209, 22, 0.1);
+        transform: scale(1.05);
+      }
+
+      .tab-btn.active {
+        background: linear-gradient(135deg, var(--colombia-yellow), #e6bc00);
+        color: var(--dark);
+        box-shadow: 0 4px 20px rgba(252, 209, 22, 0.3);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* ============ DRINK CARD ============ */
+      .drink-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 0;
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+      }
+
+      .drink-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--colombia-yellow),
+          var(--colombia-blue),
+          var(--colombia-red),
+          var(--colombia-yellow)
+        );
+        background-size: 200% 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+        animation: gradientMove 3s linear infinite;
+      }
+
+      .drink-card:hover {
+        transform: translateY(-6px) scale(1.01);
+        border-color: rgba(252, 209, 22, 0.3);
+        box-shadow:
+          0 15px 50px rgba(252, 209, 22, 0.08),
+          0 0 80px rgba(252, 209, 22, 0.03);
+      }
+
+      .drink-card:hover::before {
+        opacity: 1;
+      }
+
+      .drink-card.active {
+        border-color: rgba(252, 209, 22, 0.4);
+        box-shadow: 0 0 40px rgba(252, 209, 22, 0.1);
+      }
+
+      .drink-card.active::before {
+        opacity: 1;
+      }
+
+      .drink-img-wrapper {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #0a0a0a 0%,
+          #151515 50%,
+          #0a0a0a 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .drink-img-wrapper::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(to top, var(--card-bg), transparent);
+        z-index: 2;
+      }
+
+      .drink-img {
+        width: 60%;
+        height: 80%;
+        object-fit: contain;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 1;
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+      }
+
+      .drink-card:hover .drink-img {
+        transform: scale(1.05);
+        filter: drop-shadow(0 15px 40px rgba(252, 209, 22, 0.1));
+      }
+
+      .drink-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: linear-gradient(135deg, var(--colombia-yellow), #e6bc00);
+        color: var(--dark);
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.2rem;
+        padding: 8px 18px;
+        border-radius: 50px;
+        z-index: 3;
+        box-shadow: 0 4px 20px rgba(252, 209, 22, 0.4);
+        letter-spacing: 1px;
+      }
+
+      .drink-content {
+        padding: 20px 22px 22px;
+      }
+
+      .drink-header-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+
+      .drink-emoji {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 0 8px rgba(252, 209, 22, 0.4));
+      }
+
+      .drink-name {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.8rem;
+        color: var(--text);
+        letter-spacing: 2px;
+      }
+
+      .drink-desc {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 15px;
+        padding-left: 2px;
+      }
+
+      .drink-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .drink-price {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2rem;
+        color: var(--colombia-yellow);
+        text-shadow: 0 0 15px rgba(252, 209, 22, 0.3);
+      }
+
+      /* ============ DRINK CATEGORY TITLE ============ */
+      .drink-category {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.6rem;
+        color: var(--colombia-yellow);
+        letter-spacing: 3px;
+        margin: 30px 0 15px;
+        padding-left: 10px;
+        border-left: 4px solid var(--colombia-yellow);
+      }
+
+      /* ============ DRINK MODAL ============ */
+      .drink-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        z-index: 250;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .drink-modal-overlay.show {
+        display: flex;
+        opacity: 1;
+      }
+
+      .drink-modal {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 35px 30px;
+        max-width: 380px;
+        width: 90%;
+        text-align: center;
+        border: 2px solid var(--colombia-yellow);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        transform: scale(0.9);
+        transition: transform 0.3s;
+      }
+
+      .drink-modal-overlay.show .drink-modal {
+        transform: scale(1);
+      }
+
+      .drink-modal-icon {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .drink-modal-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.8rem;
+        color: var(--colombia-yellow);
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      .drink-modal-text {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 25px;
+        line-height: 1.5;
+      }
+
+      .drink-modal-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .drink-modal-btn {
+        padding: 14px 28px;
+        border-radius: 50px;
+        border: none;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        flex: 1;
+      }
+
+      .drink-modal-btn.yes {
+        background: linear-gradient(135deg, var(--colombia-yellow), #e6bc00);
+        color: var(--dark);
+        box-shadow: 0 4px 20px rgba(252, 209, 22, 0.3);
+      }
+
+      .drink-modal-btn.yes:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 30px rgba(252, 209, 22, 0.5);
+      }
+
+      .drink-modal-btn.no {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        border: 2px solid var(--card-border);
+      }
+
+      .drink-modal-btn.no:hover {
+        background: rgba(206, 17, 38, 0.2);
+        border-color: var(--colombia-red);
+        color: var(--colombia-red);
+      }
     </style>
     <base target="_blank" />
-  <base target="_blank">
-</head>
+    <base target="_blank" />
+  </head>
   <body>
     <div class="floating-bg">
       <span>🍔</span><span>🇨🇴</span><span>🍟</span><span>🌶️</span>
@@ -1194,7 +1506,30 @@
       <span><span class="icon">🛵</span> Delivery</span>
       <span><span class="icon">🇨🇴</span> Sabor Colombiano</span>
       <span><span class="icon">🍟</span> Todas acompanham fritas</span>
-      <a href="https://www.instagram.com/donjuan_burger" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:6px 14px;border-radius:50px;text-decoration:none;font-size:0.75rem;font-weight:600;">
+      <a
+        href="https://www.instagram.com/donjuan_burger"
+        target="_blank"
+        rel="noopener"
+        style="
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: linear-gradient(
+            45deg,
+            #f09433,
+            #e6683c,
+            #dc2743,
+            #cc2366,
+            #bc1888
+          );
+          color: #fff;
+          padding: 6px 14px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-size: 0.75rem;
+          font-weight: 600;
+        "
+      >
         📷 Instagram
       </a>
     </div>
@@ -1202,267 +1537,687 @@
     <div class="menu-container">
       <h2 class="section-title">🍔 CARDÁPIO</h2>
 
-      <div
-        class="burger-card"
-        data-id="la-colombiana"
-        data-name="La Colombiana"
-        data-price="35.00"
-      >
-        <div class="burger-img-wrapper">
-          <img
-            class="burger-img"
-            src="assets/la-colombiana.png"
-            alt="La Colombiana"
-            onerror="
-              this.src =
-                'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop'
-            "
-          />
-          <div class="burger-badge">R$ 35,00</div>
+      <div class="tab-nav">
+        <button
+          class="tab-btn active"
+          onclick="switchTab('burgers')"
+          id="tab-btn-burgers"
+        >
+          🍔 Hamburgueres
+        </button>
+        <button
+          class="tab-btn"
+          onclick="switchTab('drinks')"
+          id="tab-btn-drinks"
+        >
+          🥤 Bebidas
+        </button>
+      </div>
+
+      <div id="tab-burgers" class="tab-content active">
+        <div
+          class="burger-card"
+          data-id="la-colombiana"
+          data-name="La Colombiana"
+          data-price="35.00"
+        >
+          <div class="burger-img-wrapper">
+            <img
+              class="burger-img"
+              src="assets/la-colombiana.png"
+              alt="La Colombiana"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop'
+              "
+            />
+            <div class="burger-badge">R$ 35,00</div>
+          </div>
+          <div class="burger-content">
+            <div class="burger-header-row">
+              <span class="burger-emoji">🇨🇴</span>
+              <div class="burger-name">LA COLOMBIANA</div>
+            </div>
+            <div class="burger-desc">
+              Pão brioche, carne 130 gr, alface, tomate, banana-da-terra madura,
+              queijo cheddar, queijo muçarela, bacon, milho, cebola caramelizada
+              e molho da casa.
+            </div>
+            <div class="burger-footer">
+              <div class="burger-price">R$ 35,00</div>
+              <button class="add-btn" onclick="addToCart('la-colombiana')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('la-colombiana', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-la-colombiana">1</span>
+              <button class="qty-btn" onclick="changeQty('la-colombiana', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-la-colombiana"
+                placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
+              ></textarea>
+            </div>
+          </div>
         </div>
-        <div class="burger-content">
-          <div class="burger-header-row">
-            <span class="burger-emoji">🇨🇴</span>
-            <div class="burger-name">LA COLOMBIANA</div>
+
+        <div
+          class="burger-card"
+          data-id="la-costena"
+          data-name="La Costeña"
+          data-price="37.00"
+        >
+          <div class="burger-img-wrapper">
+            <img
+              class="burger-img"
+              src="assets/la-costena.png"
+              alt="La Costeña"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=400&fit=crop'
+              "
+            />
+            <div class="burger-badge">R$ 37,00</div>
           </div>
-          <div class="burger-desc">
-            Pão brioche, carne 130 gr, alface, tomate, banana-da-terra madura,
-            queijo cheddar, queijo muçarela, bacon, milho, cebola caramelizada e
-            molho da casa.
+          <div class="burger-content">
+            <div class="burger-header-row">
+              <span class="burger-emoji">🏖️</span>
+              <div class="burger-name">LA COSTEÑA</div>
+            </div>
+            <div class="burger-desc">
+              Pão brioche, carne 130 gr, tomate, alface, cebola caramelizada,
+              bacon, queijo muçarela, queijo cheddar, queijo assado e molho da
+              casa.
+            </div>
+            <div class="burger-footer">
+              <div class="burger-price">R$ 37,00</div>
+              <button class="add-btn" onclick="addToCart('la-costena')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('la-costena', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-la-costena">1</span>
+              <button class="qty-btn" onclick="changeQty('la-costena', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-la-costena"
+                placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
+              ></textarea>
+            </div>
           </div>
-          <div class="burger-footer">
-            <div class="burger-price">R$ 35,00</div>
-            <button class="add-btn" onclick="addToCart('la-colombiana')">
-              ➕ Adicionar
-            </button>
+        </div>
+
+        <div
+          class="burger-card"
+          data-id="la-bichota"
+          data-name="La Bichota"
+          data-price="39.00"
+        >
+          <div class="burger-img-wrapper">
+            <img
+              class="burger-img"
+              src="assets/la-bichota.png"
+              alt="La Bichota"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&h=400&fit=crop'
+              "
+            />
+            <div class="burger-badge">R$ 39,00</div>
           </div>
-          <div class="qty-selector">
-            <button class="qty-btn" onclick="changeQty('la-colombiana', -1)">
-              −
-            </button>
-            <span class="qty-value" id="qty-la-colombiana">1</span>
-            <button class="qty-btn" onclick="changeQty('la-colombiana', 1)">
-              +
-            </button>
-            <span class="qty-label">unidade(s)</span>
+          <div class="burger-content">
+            <div class="burger-header-row">
+              <span class="burger-emoji">👑</span>
+              <div class="burger-name">LA BICHOTA</div>
+            </div>
+            <div class="burger-desc">
+              Pão brioche, carne 130 gr, queijo cheddar, queijo muçarela,
+              alface, tomate, bacon, cebola caramelizada, frango desfiado ao
+              molho da casa.
+            </div>
+            <div class="burger-footer">
+              <div class="burger-price">R$ 39,00</div>
+              <button class="add-btn" onclick="addToCart('la-bichota')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('la-bichota', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-la-bichota">1</span>
+              <button class="qty-btn" onclick="changeQty('la-bichota', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-la-bichota"
+                placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
+              ></textarea>
+            </div>
           </div>
-          <div class="obs-field">
-            <textarea
-              rows="2"
-              id="obs-la-colombiana"
-              placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
-            ></textarea>
+        </div>
+
+        <div
+          class="burger-card"
+          data-id="la-montanera"
+          data-name="La Montañera"
+          data-price="40.00"
+        >
+          <div class="burger-img-wrapper">
+            <img
+              class="burger-img"
+              src="assets/la-montanera.png"
+              alt="La Montañera"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&h=400&fit=crop'
+              "
+            />
+            <div class="burger-badge">R$ 40,00</div>
+          </div>
+          <div class="burger-content">
+            <div class="burger-header-row">
+              <span class="burger-emoji">⛰️</span>
+              <div class="burger-name">LA MONTAÑERA</div>
+            </div>
+            <div class="burger-desc">
+              Pão brioche, carne 130 gr, duplo queijo cheddar, tomate, alface,
+              cebola caramelizada, cebola crocante, bacon e molho da casa.
+            </div>
+            <div class="burger-footer">
+              <div class="burger-price">R$ 40,00</div>
+              <button class="add-btn" onclick="addToCart('la-montanera')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('la-montanera', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-la-montanera">1</span>
+              <button class="qty-btn" onclick="changeQty('la-montanera', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-la-montanera"
+                placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="burger-card"
+          data-id="awo"
+          data-name="Awo"
+          data-price="44.00"
+        >
+          <div class="burger-img-wrapper">
+            <img
+              class="burger-img"
+              src="assets/awo.png"
+              alt="Awo"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=600&h=400&fit=crop'
+              "
+            />
+            <div class="burger-badge">R$ 44,00</div>
+          </div>
+          <div class="burger-content">
+            <div class="burger-header-row">
+              <span class="burger-emoji">⚡</span>
+              <div class="burger-name">AWO</div>
+            </div>
+            <div class="burger-desc">
+              Pão brioche, carne 130 gr, queijo cheddar, queijo muçarela,
+              alface, cebola roxa, bacon, cebola caramelizada, carne suína
+              desfiada, cream cheese e molho da casa.
+            </div>
+            <div class="burger-footer">
+              <div class="burger-price">R$ 44,00</div>
+              <button class="add-btn" onclick="addToCart('awo')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('awo', -1)">−</button>
+              <span class="qty-value" id="qty-awo">1</span>
+              <button class="qty-btn" onclick="changeQty('awo', 1)">+</button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-awo"
+                placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-drinks" class="tab-content">
+        <h3 class="drink-category">🥤 3 Litros</h3>
+
+        <div
+          class="drink-card"
+          data-id="coca-3l"
+          data-name="Coca-Cola Comum 3L"
+          data-price="20.00"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/coca-3l.png"
+              alt="Coca-Cola 3L"
+            />
+            <div class="drink-badge">R$ 20,00</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">COCA-COLA COMUM 3L</div>
+            </div>
+            <div class="drink-desc">
+              Garrafa de 3 litros de Coca-Cola original.
+            </div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 20,00</div>
+              <button class="add-btn" onclick="addToCart('coca-3l')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('coca-3l', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-coca-3l">1</span>
+              <button class="qty-btn" onclick="changeQty('coca-3l', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-coca-3l"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="drink-category">🥤 2 Litros</h3>
+
+        <div
+          class="drink-card"
+          data-id="coca-2l"
+          data-name="Coca-Cola 2L"
+          data-price="15.00"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/coca-2l.png"
+              alt="Coca-Cola 2L"
+            />
+            <div class="drink-badge">R$ 15,00</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">COCA-COLA 2L</div>
+            </div>
+            <div class="drink-desc">
+              Garrafa de 2 litros de Coca-Cola original.
+            </div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 15,00</div>
+              <button class="add-btn" onclick="addToCart('coca-2l')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('coca-2l', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-coca-2l">1</span>
+              <button class="qty-btn" onclick="changeQty('coca-2l', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-coca-2l"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="drink-card"
+          data-id="guarana-2l"
+          data-name="Guaraná 2L"
+          data-price="10.00"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/guarana-2l.png"
+              alt="Guaraná 2L"
+            />
+            <div class="drink-badge">R$ 10,00</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">GUARANÁ 2L</div>
+            </div>
+            <div class="drink-desc">Garrafa de 2 litros de Guaraná.</div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 10,00</div>
+              <button class="add-btn" onclick="addToCart('guarana-2l')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('guarana-2l', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-guarana-2l">1</span>
+              <button class="qty-btn" onclick="changeQty('guarana-2l', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-guarana-2l"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="drink-category">🥤 600ml</h3>
+
+        <div
+          class="drink-card"
+          data-id="coca-600ml"
+          data-name="Coca-Cola Comum 600ml"
+          data-price="8.00"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/coca-600ml.png"
+              alt="Coca-Cola 600ml"
+            />
+            <div class="drink-badge">R$ 8,00</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">COCA-COLA COMUM 600ML</div>
+            </div>
+            <div class="drink-desc">
+              Garrafa de 600ml de Coca-Cola original.
+            </div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 8,00</div>
+              <button class="add-btn" onclick="addToCart('coca-600ml')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('coca-600ml', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-coca-600ml">1</span>
+              <button class="qty-btn" onclick="changeQty('coca-600ml', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-coca-600ml"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="drink-card"
+          data-id="coca-zero-600ml"
+          data-name="Coca-Cola Zero 600ml"
+          data-price="8.00"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/coca-zero-600ml.png"
+              alt="Coca-Cola Zero 600ml"
+            />
+            <div class="drink-badge">R$ 8,00</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">COCA-COLA ZERO 600ML</div>
+            </div>
+            <div class="drink-desc">Garrafa de 600ml de Coca-Cola Zero.</div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 8,00</div>
+              <button class="add-btn" onclick="addToCart('coca-zero-600ml')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button
+                class="qty-btn"
+                onclick="changeQty('coca-zero-600ml', -1)"
+              >
+                −
+              </button>
+              <span class="qty-value" id="qty-coca-zero-600ml">1</span>
+              <button class="qty-btn" onclick="changeQty('coca-zero-600ml', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-coca-zero-600ml"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="drink-card"
+          data-id="guarana-600ml"
+          data-name="Guaraná 600ml"
+          data-price="7.50"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/guarana-600ml.png"
+              alt="Guaraná 600ml"
+            />
+            <div class="drink-badge">R$ 7,50</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">GUARANÁ 600ML</div>
+            </div>
+            <div class="drink-desc">Garrafa de 600ml de Guaraná.</div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 7,50</div>
+              <button class="add-btn" onclick="addToCart('guarana-600ml')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('guarana-600ml', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-guarana-600ml">1</span>
+              <button class="qty-btn" onclick="changeQty('guarana-600ml', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-guarana-600ml"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="drink-category">🥤 Lata 350ml</h3>
+
+        <div
+          class="drink-card"
+          data-id="coca-lata"
+          data-name="Coca-Cola Comum Lata 350ml"
+          data-price="6.00"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/coca-lata.png"
+              alt="Coca-Cola Lata"
+            />
+            <div class="drink-badge">R$ 6,00</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">COCA-COLA COMUM LATA 350ML</div>
+            </div>
+            <div class="drink-desc">Lata de 350ml de Coca-Cola original.</div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 6,00</div>
+              <button class="add-btn" onclick="addToCart('coca-lata')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('coca-lata', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-coca-lata">1</span>
+              <button class="qty-btn" onclick="changeQty('coca-lata', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-coca-lata"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="drink-card"
+          data-id="guarana-lata"
+          data-name="Guaraná Lata 350ml"
+          data-price="5.50"
+        >
+          <div class="drink-img-wrapper">
+            <img
+              class="drink-img"
+              src="assets/guarana-lata.png"
+              alt="Guaraná Lata"
+            />
+            <div class="drink-badge">R$ 5,50</div>
+          </div>
+          <div class="drink-content">
+            <div class="drink-header-row">
+              <span class="drink-emoji">🥤</span>
+              <div class="drink-name">GUARANÁ LATA 350ML</div>
+            </div>
+            <div class="drink-desc">Lata de 350ml de Guaraná.</div>
+            <div class="drink-footer">
+              <div class="drink-price">R$ 5,50</div>
+              <button class="add-btn" onclick="addToCart('guarana-lata')">
+                ➕ Adicionar
+              </button>
+            </div>
+            <div class="qty-selector">
+              <button class="qty-btn" onclick="changeQty('guarana-lata', -1)">
+                −
+              </button>
+              <span class="qty-value" id="qty-guarana-lata">1</span>
+              <button class="qty-btn" onclick="changeQty('guarana-lata', 1)">
+                +
+              </button>
+              <span class="qty-label">unidade(s)</span>
+            </div>
+            <div class="obs-field">
+              <textarea
+                rows="2"
+                id="obs-guarana-lata"
+                placeholder="Alguma observação?"
+              ></textarea>
+            </div>
           </div>
         </div>
       </div>
 
       <div
-        class="burger-card"
-        data-id="la-costena"
-        data-name="La Costeña"
-        data-price="37.00"
+        class="footer-note"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
+        "
       >
-        <div class="burger-img-wrapper">
-          <img
-            class="burger-img"
-            src="assets/la-costena.png"
-            alt="La Costeña"
-            onerror="
-              this.src =
-                'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=400&fit=crop'
-            "
-          />
-          <div class="burger-badge">R$ 37,00</div>
-        </div>
-        <div class="burger-content">
-          <div class="burger-header-row">
-            <span class="burger-emoji">🏖️</span>
-            <div class="burger-name">LA COSTEÑA</div>
-          </div>
-          <div class="burger-desc">
-            Pão brioche, carne 130 gr, tomate, alface, cebola caramelizada,
-            bacon, queijo muçarela, queijo cheddar, queijo assado e molho da
-            casa.
-          </div>
-          <div class="burger-footer">
-            <div class="burger-price">R$ 37,00</div>
-            <button class="add-btn" onclick="addToCart('la-costena')">
-              ➕ Adicionar
-            </button>
-          </div>
-          <div class="qty-selector">
-            <button class="qty-btn" onclick="changeQty('la-costena', -1)">
-              −
-            </button>
-            <span class="qty-value" id="qty-la-costena">1</span>
-            <button class="qty-btn" onclick="changeQty('la-costena', 1)">
-              +
-            </button>
-            <span class="qty-label">unidade(s)</span>
-          </div>
-          <div class="obs-field">
-            <textarea
-              rows="2"
-              id="obs-la-costena"
-              placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
-            ></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="burger-card"
-        data-id="la-bichota"
-        data-name="La Bichota"
-        data-price="39.00"
-      >
-        <div class="burger-img-wrapper">
-          <img
-            class="burger-img"
-            src="assets/la-bichota.png"
-            alt="La Bichota"
-            onerror="
-              this.src =
-                'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&h=400&fit=crop'
-            "
-          />
-          <div class="burger-badge">R$ 39,00</div>
-        </div>
-        <div class="burger-content">
-          <div class="burger-header-row">
-            <span class="burger-emoji">👑</span>
-            <div class="burger-name">LA BICHOTA</div>
-          </div>
-          <div class="burger-desc">
-            Pão brioche, carne 130 gr, queijo cheddar, queijo muçarela, alface,
-            tomate, bacon, cebola caramelizada, frango desfiado ao molho da
-            casa.
-          </div>
-          <div class="burger-footer">
-            <div class="burger-price">R$ 39,00</div>
-            <button class="add-btn" onclick="addToCart('la-bichota')">
-              ➕ Adicionar
-            </button>
-          </div>
-          <div class="qty-selector">
-            <button class="qty-btn" onclick="changeQty('la-bichota', -1)">
-              −
-            </button>
-            <span class="qty-value" id="qty-la-bichota">1</span>
-            <button class="qty-btn" onclick="changeQty('la-bichota', 1)">
-              +
-            </button>
-            <span class="qty-label">unidade(s)</span>
-          </div>
-          <div class="obs-field">
-            <textarea
-              rows="2"
-              id="obs-la-bichota"
-              placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
-            ></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="burger-card"
-        data-id="la-montanera"
-        data-name="La Montañera"
-        data-price="40.00"
-      >
-        <div class="burger-img-wrapper">
-          <img
-            class="burger-img"
-            src="assets/la-montanera.png"
-            alt="La Montañera"
-            onerror="
-              this.src =
-                'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&h=400&fit=crop'
-            "
-          />
-          <div class="burger-badge">R$ 40,00</div>
-        </div>
-        <div class="burger-content">
-          <div class="burger-header-row">
-            <span class="burger-emoji">⛰️</span>
-            <div class="burger-name">LA MONTAÑERA</div>
-          </div>
-          <div class="burger-desc">
-            Pão brioche, carne 130 gr, duplo queijo cheddar, tomate, alface,
-            cebola caramelizada, cebola crocante, bacon e molho da casa.
-          </div>
-          <div class="burger-footer">
-            <div class="burger-price">R$ 40,00</div>
-            <button class="add-btn" onclick="addToCart('la-montanera')">
-              ➕ Adicionar
-            </button>
-          </div>
-          <div class="qty-selector">
-            <button class="qty-btn" onclick="changeQty('la-montanera', -1)">
-              −
-            </button>
-            <span class="qty-value" id="qty-la-montanera">1</span>
-            <button class="qty-btn" onclick="changeQty('la-montanera', 1)">
-              +
-            </button>
-            <span class="qty-label">unidade(s)</span>
-          </div>
-          <div class="obs-field">
-            <textarea
-              rows="2"
-              id="obs-la-montanera"
-              placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
-            ></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="burger-card" data-id="awo" data-name="Awo" data-price="44.00">
-        <div class="burger-img-wrapper">
-          <img
-            class="burger-img"
-            src="assets/awo.png"
-            alt="Awo"
-            onerror="
-              this.src =
-                'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=600&h=400&fit=crop'
-            "
-          />
-          <div class="burger-badge">R$ 44,00</div>
-        </div>
-        <div class="burger-content">
-          <div class="burger-header-row">
-            <span class="burger-emoji">⚡</span>
-            <div class="burger-name">AWO</div>
-          </div>
-          <div class="burger-desc">
-            Pão brioche, carne 130 gr, queijo cheddar, queijo muçarela, alface,
-            cebola roxa, bacon, cebola caramelizada, carne suína desfiada, cream
-            cheese e molho da casa.
-          </div>
-          <div class="burger-footer">
-            <div class="burger-price">R$ 44,00</div>
-            <button class="add-btn" onclick="addToCart('awo')">
-              ➕ Adicionar
-            </button>
-          </div>
-          <div class="qty-selector">
-            <button class="qty-btn" onclick="changeQty('awo', -1)">−</button>
-            <span class="qty-value" id="qty-awo">1</span>
-            <button class="qty-btn" onclick="changeQty('awo', 1)">+</button>
-            <span class="qty-label">unidade(s)</span>
-          </div>
-          <div class="obs-field">
-            <textarea
-              rows="2"
-              id="obs-awo"
-              placeholder="Alguma observação? (ex: sem cebola, bem passado...)"
-            ></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-note" style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
         <span class="fries">🍟</span>
         <span>TODAS NOSSAS HAMBURGERS VEM ACOMPANHADAS DE FRITAS</span>
         <span class="fries">🍟</span>
@@ -1514,6 +2269,43 @@
             ></textarea>
           </div>
           <div class="form-group">
+            <label>Selecione seu Bairro *</label>
+            <select id="neighborhood">
+              <option value="">Selecione...</option>
+              <option value="Aclamação" data-freight="10">Aclamação</option>
+              <option value="Alvorada" data-freight="9">Alvorada</option>
+              <option value="Areia Preta" data-freight="12">Areia Preta</option>
+              <option value="Belmonte" data-freight="7">Belmonte</option>
+              <option value="Boa Vista" data-freight="12">Boa Vista</option>
+              <option value="Carneirinhos" data-freight="10">
+                Carneirinhos
+              </option>
+              <option value="Cruzeiro Celeste" data-freight="8">
+                Cruzeiro Celeste
+              </option>
+              <option value="Industrial" data-freight="9">Industrial</option>
+              <option value="Laranjeiras" data-freight="7">Laranjeiras</option>
+              <option value="Loanda" data-freight="6">Loanda</option>
+              <option value="Lourdes" data-freight="8">Lourdes</option>
+              <option value="Metalúrgico" data-freight="7">Metalúrgico</option>
+              <option value="Nova Monlevade" data-freight="10">
+                Nova Monlevade
+              </option>
+              <option value="Novo Cruzeiro" data-freight="10">
+                Novo Cruzeiro
+              </option>
+              <option value="Novo Horizonte" data-freight="10">
+                Novo Horizonte
+              </option>
+              <option value="República" data-freight="10">República</option>
+              <option value="Satélite" data-freight="7">Satélite</option>
+              <option value="Serra" data-freight="10">Serra</option>
+              <option value="Sion" data-freight="10">Sion</option>
+              <option value="São João" data-freight="9">São João</option>
+              <option value="Vila Tanque" data-freight="12">Vila Tanque</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label>Forma de pagamento *</label>
             <select id="paymentMethod">
               <option value="">Selecione...</option>
@@ -1547,9 +2339,44 @@
       <span id="toastMsg">Item adicionado!</span>
     </div>
 
+    <div class="drink-modal-overlay" id="drinkModal">
+      <div class="drink-modal">
+        <span class="drink-modal-icon">🥤</span>
+        <div class="drink-modal-title">QUE TAL UMA BEBIDA?</div>
+        <div class="drink-modal-text">
+          Você selecionou hambúrgueres no seu pedido.<br />Deseja adicionar uma
+          bebida?
+        </div>
+        <div class="drink-modal-buttons">
+          <button class="drink-modal-btn yes" onclick="goToDrinks()">
+            Sim
+          </button>
+          <button class="drink-modal-btn no" onclick="skipDrinks()">Não</button>
+        </div>
+      </div>
+    </div>
+
     <script>
-      const WHATSAPP_NUMBER = "5511999999999";
+      const WHATSAPP_NUMBER = "5531980479022";
       let cart = [];
+
+      const burgerIds = [
+        "la-colombiana",
+        "la-costena",
+        "la-bichota",
+        "la-montanera",
+        "awo",
+      ];
+      const drinkIds = [
+        "coca-3l",
+        "coca-2l",
+        "guarana-2l",
+        "coca-600ml",
+        "coca-zero-600ml",
+        "guarana-600ml",
+        "coca-lata",
+        "guarana-lata",
+      ];
 
       function addToCart(id) {
         const card = document.querySelector(`[data-id="${id}"]`);
@@ -1592,17 +2419,30 @@
         qtyEl.textContent = qty;
       }
 
-      document.querySelectorAll(".burger-card").forEach((card) => {
+      document.querySelectorAll(".burger-card, .drink-card").forEach((card) => {
         card.addEventListener("click", function (e) {
           if (
             e.target.closest("button") ||
             e.target.closest("textarea") ||
-            e.target.closest(".burger-img-wrapper")
+            e.target.closest(".burger-img-wrapper") ||
+            e.target.closest(".drink-img-wrapper")
           )
             return;
           this.classList.toggle("active");
         });
       });
+
+      function switchTab(tab) {
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((el) => el.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("tab-" + tab).classList.add("active");
+        document.getElementById("tab-btn-" + tab).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
 
       function updateCartUI() {
         const count = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -1615,12 +2455,8 @@
         const checkoutBtn = document.getElementById("checkoutBtn");
 
         if (cart.length === 0) {
-          itemsContainer.innerHTML = `
-        <div class="cart-empty">
-          <span class="emoji">🍔</span>
-          <p>Seu carrinho está vazio.<br>Escolha um burger delicioso!</p>
-        </div>
-      `;
+          itemsContainer.innerHTML =
+            '<div class="cart-empty"><span class="emoji">🍔</span><p>Seu carrinho está vazio.<br>Escolha um burger delicioso!</p></div>';
           totalEl.textContent = "R$ 0,00";
           checkoutBtn.disabled = true;
           return;
@@ -1631,22 +2467,37 @@
           .map((item, index) => {
             const itemTotal = item.price * item.qty;
             total += itemTotal;
-            return `
-              <div class="cart-item">
-                <div class="cart-item-info">
-                  <div class="cart-item-name">${item.name}</div>
-                  <div class="cart-item-qty">${item.qty}x unidade(s) — R$ ${itemTotal.toFixed(2).replace(".", ",")}</div>
-                  ${item.obs ? `<div class="cart-item-obs">📝 Obs: ${item.obs}</div>` : ""}
-                </div>
-                <button class="cart-item-remove" onclick="removeFromCart(${index})" title="Remover item">
-                  🗑️
-                </button>
-              </div>
-            `;
+            let obsHtml = item.obs
+              ? '<div class="cart-item-obs">📝 Obs: ' + item.obs + "</div>"
+              : "";
+            return (
+              '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">' +
+              item.name +
+              '</div><div class="cart-item-qty">' +
+              item.qty +
+              "x unidade(s) — R$ " +
+              itemTotal.toFixed(2).replace(".", ",") +
+              "</div>" +
+              obsHtml +
+              '</div><button class="cart-item-remove" onclick="removeFromCart(' +
+              index +
+              ')" title="Remover item">🗑️</button></div>'
+            );
           })
           .join("");
 
-        totalEl.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
+        // Calcular frete se bairro selecionado
+        const neighborhoodSelect = document.getElementById("neighborhood");
+        let freight = 0;
+        if (neighborhoodSelect && neighborhoodSelect.value) {
+          const selectedOption =
+            neighborhoodSelect.options[neighborhoodSelect.selectedIndex];
+          freight = parseFloat(selectedOption.dataset.freight) || 0;
+        }
+        const totalWithFreight = total + freight;
+
+        totalEl.textContent =
+          "R$ " + totalWithFreight.toFixed(2).replace(".", ",");
         checkoutBtn.disabled = false;
       }
 
@@ -1657,10 +2508,36 @@
         showToast("🗑️", `${item.name} removido do carrinho`);
       }
 
+      function hasBurgers() {
+        return cart.some((item) => burgerIds.includes(item.id));
+      }
+
+      function hasDrinks() {
+        return cart.some((item) => drinkIds.includes(item.id));
+      }
+
       function openCart() {
+        if (hasBurgers() && !hasDrinks()) {
+          document.getElementById("drinkModal").classList.add("show");
+          return;
+        }
+        showCart();
+      }
+
+      function showCart() {
         document.getElementById("cartModal").classList.add("show");
         document.body.style.overflow = "hidden";
         updateCartUI();
+      }
+
+      function goToDrinks() {
+        document.getElementById("drinkModal").classList.remove("show");
+        switchTab("drinks");
+      }
+
+      function skipDrinks() {
+        document.getElementById("drinkModal").classList.remove("show");
+        showCart();
       }
 
       function closeCart() {
@@ -1676,9 +2553,10 @@
         const name = document.getElementById("customerName").value.trim();
         const phone = document.getElementById("customerPhone").value.trim();
         const address = document.getElementById("customerAddress").value.trim();
+        const neighborhood = document.getElementById("neighborhood").value;
         const payment = document.getElementById("paymentMethod").value;
 
-        if (!name || !phone || !address || !payment) {
+        if (!name || !phone || !address || !neighborhood || !payment) {
           showToast("⚠️", "Preencha todos os campos obrigatórios!");
           return;
         }
@@ -1688,30 +2566,63 @@
           return;
         }
 
+        // Calcular frete baseado no bairro
+        const neighborhoodSelect = document.getElementById("neighborhood");
+        const selectedOption =
+          neighborhoodSelect.options[neighborhoodSelect.selectedIndex];
+        const freight = parseFloat(selectedOption.dataset.freight);
+
         let total = 0;
         let itemsText = cart
           .map((item) => {
             const itemTotal = item.price * item.qty;
             total += itemTotal;
-            let text = `• ${item.name} (${item.qty}x) - R$ ${itemTotal.toFixed(2).replace(".", ",")}`;
-            if (item.obs) text += `\n  📝 Obs: ${item.obs}`;
+            let text =
+              "• " +
+              item.name +
+              " (" +
+              item.qty +
+              "x) - R$ " +
+              itemTotal.toFixed(2).replace(".", ",");
+            if (item.obs) text += "\n📝 Obs: " + item.obs;
             return text;
           })
           .join("\n");
 
+        const totalWithFreight = total + freight;
+
         const message =
-          `🍔 *PEDIDO DON JUAN HAMBURGUER* 🍔\n\n` +
-          `👤 *Cliente:* ${name}\n` +
-          `📱 *Telefone:* ${phone}\n` +
-          `📍 *Endereço:* ${address}\n` +
-          `💳 *Pagamento:* ${payment}\n\n` +
-          `*ITENS DO PEDIDO:*\n${itemsText}\n\n` +
-          `💰 *Total:* R$ ${total.toFixed(2).replace(".", ",")}\n\n` +
-          `🍟 *Todas os hamburguers acompanham fritas*\n\n` +
-          `_Pedido enviado via cardápio digital Don Juan_`;
+          "🍔 *PEDIDO DON JUAN HAMBURGUER* 🍔\n\n" +
+          "👤 *Cliente:* " +
+          name +
+          "\n" +
+          "📱 *Telefone:* " +
+          phone +
+          "\n" +
+          "📍 *Endereço:* " +
+          address +
+          "\n" +
+          "🏘️ *Bairro:* " +
+          neighborhood +
+          "\n" +
+          "💳 *Pagamento:* " +
+          payment +
+          "\n\n" +
+          "*ITENS DO PEDIDO:*\n" +
+          itemsText +
+          "\n\n" +
+          "🚚 *Frete:* R$ " +
+          freight.toFixed(2).replace(".", ",") +
+          "\n" +
+          "💰 *Total:* R$ " +
+          totalWithFreight.toFixed(2).replace(".", ",") +
+          "\n\n" +
+          "🍟 *Todas os hamburguers acompanham fritas*\n\n" +
+          "_Pedido enviado via cardápio digital Don Juan_";
 
         const encodedMsg = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${5531980479022}?text=${encodedMsg}`;
+        const whatsappUrl =
+          "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodedMsg;
 
         window.open(whatsappUrl, "_blank");
         showToast("📱", "Redirecionando para o WhatsApp...");
@@ -1724,6 +2635,11 @@
         toast.classList.add("show");
         setTimeout(() => toast.classList.remove("show"), 3000);
       }
+
+      // Atualizar total quando o bairro mudar
+      document
+        .getElementById("neighborhood")
+        .addEventListener("change", updateCartUI);
 
       updateCartUI();
     </script>
